@@ -1,0 +1,32 @@
+import React, { useState } from 'react'
+
+const Login = () => {
+
+  const [credentials, setCredentials] = useState({username: "", password: ""})
+
+  const {username, password} = credentials;
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    // API Call
+    const res = await fetch('http://localhost:4000/login')
+  }
+
+  const onChange = (e) => {
+    setCredentials({...credentials, [e.target.name]: e.target.value})
+  }
+
+  return (
+    <div className='flex flex-col mx-auto w-[1000px] m-9'>
+        <h1 className='text-5xl font-bold text-center my-2 underline'>Login</h1>
+        <form className='flex flex-col my-[100px] p-3' onSubmit={handleSubmit}>
+            <input onChange={onChange} value={username} className='focus:outline-none h-10 border-2 p-2 border-black my-2 rounded-xl text-lg bg-gray-300' type="name" id='username' name='username' placeholder='username'/>
+            <input onChange={onChange} id='password' name='password' value={password} className='focus:outline-none h-10 border-2 p-2 border-black my-2 rounded-xl text-lg bg-gray-300' type="password" placeholder='password'/>
+            <button className='my-5 rounded-xl p-1 hover:text-gray-200 hover:bg-gray-500 bg-gray-400 text-lg border-2 border-black w-[100px] mx-auto'>Submit</button>
+        </form>
+    </div>
+  )
+}
+
+export default Login

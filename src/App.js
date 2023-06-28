@@ -1,11 +1,18 @@
-import logo from './logo.svg';
+import { Routes, Route } from 'react-router-dom';
 import './App.css';
+import Index from './pages/Index';
+import Login from './pages/Login';
+import Register from './pages/Register';
 
 function App() {
   return (
-    <h1 className="text-3xl font-bold underline">
-      Hello world!
-    </h1>
+    <div>
+      <Routes>
+      <Route path="/" element={<Index/>}/>
+      <Route path="/login" element={<Login/>}/>
+      <Route path="/signup" element={<Register/>}/>
+      </Routes>
+    </div>
   );
 }
 
