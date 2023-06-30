@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
+import { Navigate } from 'react-router-dom';
 
 const Signup = () => {
 
-  const [credentials, setCredentials] = useState({username: "", password: ""})
+  const [credentials, setCredentials] = useState({username: "", password: ""});
+  const [redirect, setRedirect] = useState(false)
 
   const {username, password} = credentials;
 
@@ -10,15 +12,27 @@ const Signup = () => {
     e.preventDefault();
 
     // API Call
-    const res = await fetch('http://localhost:4000/register', {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({username, password})
-    })
+        const res = await fetch('http://localhost:4000/register', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({username, password})
+        })
+        // console.log(res)
+
+        if(res.status === 200){
+            console.log("Registration Successfull");
+            setRedirect(true);
+        }else{
+            console.log("Registration Failed");
+        } 
   }
 
   const onChange = (e) => {
     setCredentials({...credentials, [e.target.name]: e.target.value})
+  }
+
+  if(redirect){
+    return <Navigate to={'/'} />
   }
 
   return (
