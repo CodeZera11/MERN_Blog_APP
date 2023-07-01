@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect} from 'react'
 import { Link } from 'react-router-dom'
 import { UserContext } from '../contexts/UserContext'
 
@@ -27,7 +27,7 @@ const Navbar = () => {
   const username = userInfo?.username
 
   return (
-    <div className='flex justify-between w-full h-[4rem] bg-black text-white'>
+    <div className='mb-0 flex justify-between w-full h-[4rem] bg-black text-white'>
         <div className='logo flex items-center text-xl hover:cursor-pointer mx-4'><Link to='/'>Blog App</Link></div>
             <div className='flex items-center'>
               {username && (

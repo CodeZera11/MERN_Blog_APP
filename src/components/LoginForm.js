@@ -6,7 +6,7 @@ const Login = () => {
 
   const [credentials, setCredentials] = useState({username: "", password: ""})
   const [redirect, setRedirect] = useState(false);
-  const {userInfo, setUserInfo} = useContext(UserContext);
+  const { setUserInfo} = useContext(UserContext);
 
   const {username, password} = credentials;
 
